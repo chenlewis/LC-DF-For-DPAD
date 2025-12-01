@@ -1,4 +1,5 @@
 ## Overview
+This is the implementation of the method proposed in "Peiquan Li, Changsheng Chen, Yulia Chernyshova, Dmitry Nikolaev, Shunquan Tan, Vladimir Arlazarov, "Disentangling Moiré and Texture: Towards Robust Display-Recapture Detection for Document Images," 2025 IEEE International Workshop on Information Forensics and Security (WIFS)
 
 ## Environment
 This code was implemented with Python 3.7 and PyTorch 1.10.1. You can install all the requirements via:
