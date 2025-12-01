@@ -1,0 +1,50 @@
+_BASE_: "../base-prompt.yaml"
+RUN_N_TIMES: 1
+DATA:
+  NAME: "S1"
+  DATAPATH: "/home/data1/lyj/ROD/images_with_moire_testLQM&F/"
+  NUMBER_CLASSES: 2
+  MULTILABEL: False
+
+
+# /home/data1/lyj/ROD/images_with_moire_testLQM&F/ /home/data1/lyj/ROD/M&F_mini/ /home/data1/lyj/ROD/images_fag_LQMF/ /home/data1/lyj/ROD/HQ_OCR_only_testLQM&F/
+# /home/data1/lyj/ROD/HQ_OCR_Moire_new/  /home/data1/lyj/ROD/images_with_moire/  /home/data1/lyj/ROD/images_with_moire_FMAG/ /home/data1/lyj/ROD/images_fag_LQMF/
+# /home/data1/lyj/ROD/images_fag_LQMF/ /home/data1/lyj/ROD/HQ_OCR_Moire_new/  /home/data1/lyj/ROD/HQ_OCR_Moirenew_testLQM&F/
+MODEL:
+  TYPE: "vit"
+  name: "clas"
+  args:
+    inp_size: 224
+    loss: bcew
+    encoder_mode:
+      name: 'Swinbc'
+      handcrafted_tune: False
+      embedding_tune: False
+      adapter_dim: 32
+      scale_factor: 16
+      patch_size: 4
+      patch_size_prompt: 4
+      search_size: 224
+      template_size: 224
+
+SOLVER:
+  BASE_LR: 0.1
+  WEIGHT_DECAY: 0.01
+#optimizer:
+#  name: adamw
+#  args:
+#    lr: 6.e-6
+#    betas: (0.9, 0.999)
+#    weight_decay: 1.e-3
+optimizer:
+  name: sgd
+  args:
+    lr: 5.e-5
+    weight_decay: 0.05
+epoch_max: 50
+#multi_step_lr: 2e-5 2e-3
+#  milestones: [1]
+#  gamma: 0.1
+OUTPUT_DIR: "/home/lyj/code_lpq/Output_RODHQ/BAT-FMAG/Swin/MFLQ/FMAG_auto/"
+#/home/lyj/code_lpq/Output_RODHQ/BAT-FMAG/MF162/xz/  /home/lyj/code_lpq/Output_RODHQ/BAT-FMAG/MFLQ/xz/
+#/home/lyj/code_lpq/Output_RODHQ/BAT-FMAG/Swin/MFLQ/mask/

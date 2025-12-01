@@ -1,0 +1,40 @@
+_BASE_: "./base-prompt-s.yaml"
+RUN_N_TIMES: 100
+DATA:
+  NAME: "doc1"
+  DATAPATH: ""
+  NUMBER_CLASSES: 2
+  MULTILABEL: False
+
+MODEL:
+  TYPE: "vit"
+  name: "clas"
+  ONLYTEST: "True"
+  TESTPTH: ""
+  args:
+    inp_size: 224
+    loss: bcew
+    encoder_mode:
+      name: 'Swinbc'
+      handcrafted_tune: False
+      embedding_tune: False
+      adapter_dim: 32
+      scale_factor: 8
+      patch_size: 4
+      patch_size_prompt: 4
+      search_size: 224
+      template_size: 224
+      pretrain: False
+
+SOLVER:
+  BASE_LR: 0.1
+  WEIGHT_DECAY: 0.01
+
+optimizer:
+  name: sgd
+  args:
+    lr: 1.e-3
+    weight_decay: 0.05
+epoch_max: 50
+
+OUTPUT_DIR: ""

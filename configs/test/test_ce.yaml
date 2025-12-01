@@ -1,0 +1,39 @@
+_BASE_: "./base-prompt-s.yaml"
+RUN_N_TIMES: 100
+DATA:
+  NAME: "doc1"
+  DATAPATH: "/home/KID34K/"
+  NUMBER_CLASSES: 2
+  MULTILABEL: False
+
+MODEL:
+  TYPE: "vit"
+  ONLYTEST: "True"
+  TESTPTH: "/home/Output/LC&DF/model_best.pth"
+  name: "clas"
+  args:
+    inp_size: 224
+    loss: bcew
+    encoder_mode:
+      name: 'LCDF'
+      handcrafted_tune: False
+      embedding_tune: False
+      adapter_dim: 32
+      scale_factor: 8
+      patch_size: 14
+      patch_size_prompt: 14
+      search_size: 224
+      template_size: 224
+SOLVER:
+  BASE_LR: 0.05
+  WEIGHT_DECAY: 0.005
+
+optimizer:
+  name: sgd
+  args:
+    lr: 5.e-5
+    weight_decay: 0.05
+epoch_max: 50
+
+OUTPUT_DIR: "/home/test/ROD-KID34K/LCDF/"
+

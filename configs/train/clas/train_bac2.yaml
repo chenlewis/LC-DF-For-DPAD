@@ -1,0 +1,36 @@
+_BASE_: "../base-prompt.yaml"
+RUN_N_TIMES: 1
+DATA:
+  NAME: "S1"
+  DATAPATH: "/home/data1/lyj/CMA/RODHQ/"
+  NUMBER_CLASSES: 2
+  MULTILABEL: False
+
+MODEL:
+  TYPE: "vit"
+  name: "clas"
+  args:
+    inp_size: 224
+    loss: bcew
+    encoder_mode:
+      name: 'LCDF'
+      handcrafted_tune: False
+      embedding_tune: False
+      adapter_dim: 32
+      scale_factor: 8
+      patch_size: 14
+      patch_size_prompt: 14
+      search_size: 224
+      template_size: 224
+
+SOLVER:
+  BASE_LR: 0.1
+  WEIGHT_DECAY: 0.01
+
+optimizer:
+  name: sgd
+  args:
+    lr: 5.e-4
+    weight_decay: 0.00005
+
+OUTPUT_DIR: "/home/lyj/code_lpq/Output/LC&DF/"
