@@ -21,5 +21,4 @@ python test.py --config [CONFIG_PATH]
 
 ## Models and Results
 
-Please find the pre-trained models[here](https://pan.baidu.com/s/1k1XmQj4n6xFGMRED1BjgGg).
-
+Please find the pre-trained models [here](https://pan.baidu.com/s/1k1XmQj4n6xFGMRED1BjgGg). Extraction code: `chd2`.
